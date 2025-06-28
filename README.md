@@ -24,7 +24,7 @@ Hardware Components
 5)	Battery Pack and Charging Module
 6)	Jumper Wires, Zip Ties, Screws, and other basic hardware
 7)	Software Requirements
-1.	Python 3.8+ (Mediapipe will not run if python 3.15+ is installed)
+1.	Python 3.8+ (Mediapipe will not run if python 3.15+ is installed) 
 2.	VS Code and Pycharm
 3.	Arduino IDE with ESP32 Board Package
 4.	Required Libraries: OpenCV, MediaPipe, WiFi.h, WiFiUdp.h
