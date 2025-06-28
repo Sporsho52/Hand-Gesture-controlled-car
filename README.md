@@ -1,4 +1,4 @@
-This project presents a gesture-controlled bot developed as part of the Robolution Recruitment drive for my college BIT MESRA. It combines real-time computer vision, machine learning, and embedded systems to create an intuitive, contactless robot control system.
+This project presents a hand-gesture-controlled bot. It combines real-time computer vision, machine learning, and embedded systems to create an intuitive, contactless robot control system.
 
 Using a webcam, the system captures hand gestures via OpenCV and Google's MediaPipe library. Detected gestures are translated into movement commands (forward, backward, left, right, stop) and transmitted to an ESP32 microcontroller, which controls the bot's motors accordingly.
 
