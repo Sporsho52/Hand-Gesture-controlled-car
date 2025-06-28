@@ -1,0 +1,135 @@
+#include <WiFi.h>
+#include <WebServer.h>
+
+// Wi-Fi credentials
+const char* ssid = "PariF54";
+const char* password = "stupidrim";
+
+// Motor pins
+#define ENA 25
+#define IN1 26
+#define IN2 27
+#define ENB 33
+#define IN3 32
+#define IN4 23
+
+// PWM settings
+#define LEDC_RESOLUTION 8  // 8-bit = 0-255 duty
+#define LEDC_FREQ 1000     // 1 kHz PWM
+
+// Web server on port 80
+WebServer server(80);
+
+// ================= Motor Control =================
+
+void moveForward() {
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+  ledcWrite(ENA, 200);
+  ledcWrite(ENB, 200);
+}
+
+void moveBackward() {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+  ledcWrite(ENA, 200);
+  ledcWrite(ENB, 200);
+}
+
+void turnLeft() {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+  ledcWrite(ENA, 200);
+  ledcWrite(ENB, 200);
+}
+
+void turnRight() {
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+  ledcWrite(ENA, 200);
+  ledcWrite(ENB, 200);
+}
+
+void stopMotors() {
+  ledcWrite(ENA, 0);
+  ledcWrite(ENB, 0);
+}
+
+// ================= Route Handlers =================
+
+void handleForward() {
+  moveForward();
+  server.send(200, "text/plain", "Moving Forward");
+}
+
+void handleBackward() {
+  moveBackward();
+  server.send(200, "text/plain", "Moving Backward");
+}
+
+void handleLeft() {
+  turnLeft();
+  server.send(200, "text/plain", "Turning Left");
+}
+
+void handleRight() {
+  turnRight();
+  server.send(200, "text/plain", "Turning Right");
+}
+
+void handleStop() {
+  stopMotors();
+  server.send(200, "text/plain", "Stopped");
+}
+
+void handleNotFound() {
+  server.send(404, "text/plain", "Invalid Command");
+}
+
+// ================= Setup & Loop =================
+
+void setup() {
+  Serial.begin(115200);
+
+  // Motor control pins
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+
+  // Attach PWM as per your working style
+  ledcAttach(ENA, LEDC_FREQ, LEDC_RESOLUTION);
+  ledcAttach(ENB, LEDC_FREQ, LEDC_RESOLUTION);
+
+  // Wi-Fi
+  WiFi.begin(ssid, password);
+  Serial.print("Connecting");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("\nConnected! IP:");
+  Serial.println(WiFi.localIP());
+
+  // Server routes
+  server.on("/forward", handleForward);
+  server.on("/backward", handleBackward);
+  server.on("/left", handleLeft);
+  server.on("/right", handleRight);
+  server.on("/stop", handleStop);
+  server.onNotFound(handleNotFound);
+
+  server.begin();
+}
+
+void loop() {
+  server.handleClient();
+}
