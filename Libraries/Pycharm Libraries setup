@@ -1,0 +1,28 @@
+In Pycharm
+📌 Step 1: Go to Project Interpreter Settings
+
+    At the top, click File > Settings (or PyCharm > Preferences on Mac).
+
+    In the left sidebar, go to Project: your_project_name > Python Interpreter.
+
+📌 Step 2: Add Libraries
+
+    On the Python Interpreter page, click the "+" button (usually at the top right of the package list).
+
+📌 Step 3: Install OpenCV
+
+    In the search bar, type opencv-python.
+
+    Select opencv-python from the list.
+
+    Click Install Package (at the bottom).
+
+📌 Step 4: Install Mediapipe
+
+    In the same search bar, type mediapipe.
+
+    Select mediapipe from the list.
+
+    Click Install Package.
+
+DISCLAIMER: Mediapipe won't run in the latest Python version. In order to run Mediapipe, you must either set up a virtual environment or download a lower version of Python, ideally 3.10.1
