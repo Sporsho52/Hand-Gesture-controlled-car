@@ -1,5 +1,5 @@
-This project presents a gesture-controlled bot. It combines real-time computer vision, machine learning, and embedded systems to create an intuitive, contactless robot control system.
-Using a webcam, the system captures hand gestures via OpenCV and Google's MediaPipe library. Detected gestures are translated into movement commands (forward, backward, left, right, stop) and transmitted to an ESP32 microcontroller, which controls the bot's motors accordingly. 
+This project presents a gesture-controlled car. It combines real-time computer vision, machine learning, and embedded systems to create an intuitive, contactless robot control system.
+Using a webcam, the system captures hand gestures via OpenCV and Google's MediaPipe library. Detected gestures are translated into movement commands (forward, backward, left, right, stop) and transmitted to an ESP32 microcontroller, which controls the car's motors accordingly. 
 
 This solution emphasizes simplicity, low-cost hardware, and ease of use while incorporating advanced concepts like gesture recognition and serial communication.
 
@@ -38,10 +38,10 @@ Project Structure
 Getting Started
 1.	Clone the repository
 git clone https://github.com/yourusername/recruitment-gesture-bot.git
-2.	Set up the Python environment and required libraries.
+2.	Set up the Python environment and required libraries. (check libraries for guide)
 3.	Upload the Arduino code to the ESP32.
 4.	Run the Python script for gesture detection.
-5.	Control the bot using predefined hand gestures.
+5.	Control the car using predefined hand gestures.
 
 Contributions and improvements are welcome! Please open an issue to discuss changes before submitting pull requests.
 
