@@ -37,7 +37,7 @@ Project Structure
    
 Getting Started
 1.	Clone the repository
-git clone https://github.com/yourusername/recruitment-gesture-bot.git
+git clone https://github.com/Sporsho52/Hand-Gesture-controlled-car.git
 2.	Set up the Python environment and required libraries. (check libraries for guide)
 3.	Upload the Arduino code to the ESP32.
 4.	Run the Python script for gesture detection.
