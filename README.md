@@ -1,5 +1,6 @@
 This project presents a gesture-controlled car. It combines real-time computer vision, machine learning, and embedded systems to create an intuitive, contactless robot control system.
 Using a webcam, the system captures hand gestures via OpenCV and Google's MediaPipe library. Detected gestures are translated into movement commands (forward, backward, left, right, stop) and transmitted to an ESP32 microcontroller, which controls the car's motors accordingly. 
+[WORKING DEMO IN THE MEDIA FOLDER]
 
 This solution emphasizes simplicity, low-cost hardware, and ease of use while incorporating advanced concepts like gesture recognition and serial communication.
 
